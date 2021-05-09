@@ -1,3 +1,4 @@
-void Out(int** table[9]) {
+#include "header.h"
+void Sudoku::Out() {
 
 }
