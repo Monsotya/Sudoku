@@ -1,16 +1,17 @@
 #include "header.h"
 void Sudoku::CreateMatrix() {
-	/*int** table = new int* [9];
-	srand(time(NULL));
+	/*int** matrix = new int* [9];
+	
 	/*for (int i = 0; i < 9; i++) {
-		table[i] = new int[9];
+		matrix[i] = new int[9];
 	}*/
-	for (int i = 0; i < 9; i++) {
-		for (int j = 0; j < 9; j++) {
-			table[i][j] = (i * 3 + (i / 3) + j) % 9 + 1;
+	srand(time(NULL));
+	for (int i = 0; i < SIZE*SIZE; i++) {
+		for (int j = 0; j < SIZE * SIZE; j++) {
+			matrix[i][j] = (i * SIZE + (i / SIZE) + j) % (SIZE * SIZE) + 1;
 		}
 	}
-	for (int i = 0; i < rand() % 25 + 25; i++) {
+	for (int i = 0; i < rand() % 25 + 15; i++) {
 		SwapColumnAreas();
 		SwapColumns();
 	}	
@@ -21,43 +22,45 @@ void Sudoku::CreateMatrix() {
 		SwapRowAreas();
 		SwapRows();
 	}
-	/*for (int i = 0; i < 9; i++) {
+	DeleteCells();
+	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 9; j++) {
-			cout << table[i][j] << "    ";
+			if (matrix[i][j] == 0) cout << "     ";
+			else cout << matrix[i][j] << "    ";
 		}
 		cout << "\n\n";
-	}*/
+	}
 }
 void Sudoku::Transpose() {
 	int temp, k = 0;
-	for (int i = k; i < 9; i++) {
-		for (int j = k; j < 9; j++) {
-			temp = table[i][j];
-			table[i][j] = table[j][i];
-			table[j][i] = temp;
+	for (int i = k; i < SIZE * SIZE; i++) {
+		for (int j = k; j < SIZE * SIZE; j++) {
+			temp = matrix[i][j];
+			matrix[i][j] = matrix[j][i];
+			matrix[j][i] = temp;
 		}
 		k++;
 	}
 }
 void Sudoku::SwapRows() {
-	srand(time(NULL));
-	int temp, firstRow = rand() % 9, secondRow = rand() % 9;
-	while (firstRow == secondRow) secondRow = rand() % 9;
-	for (int i = 0; i < 9; i++) {
-		temp = table[firstRow][i];
-		table[firstRow][i] = table[secondRow][i];
-		table[secondRow][i] = temp;
+	//srand(time(NULL));
+	int temp, firstRow = rand() % SIZE * SIZE, secondRow = rand() % (SIZE * SIZE);
+	while (firstRow == secondRow) secondRow = rand() % (SIZE * SIZE);
+	for (int i = 0; i < SIZE * SIZE; i++) {
+		temp = matrix[firstRow][i];
+		matrix[firstRow][i] = matrix[secondRow][i];
+		matrix[secondRow][i] = temp;
 	}
 }
 void Sudoku::SwapRowAreas() {
-	srand(time(NULL));
-	int temp, i, j, k = 0, firstArea = rand() % 3 * 3, secondArea = rand() % 3 * 3;
-	while (firstArea == secondArea) secondArea = rand() % 3 * 3;
-	for (i = 0; i < 9; i++) {
-		for (j = 0; j < 3; j++) {
-			temp = table[firstArea + j][i];
-			table[firstArea + j][i] = table[secondArea + j][i];
-			table[secondArea + j][i] = temp;
+	//srand(time(NULL));
+	int temp, i, j, k = 0, firstArea = rand() % SIZE, secondArea = rand() % SIZE;
+	while (firstArea == secondArea) secondArea = rand() % SIZE * SIZE;
+	for (i = 0; i < SIZE * SIZE; i++) {
+		for (j = 0; j < SIZE; j++) {
+			temp = matrix[firstArea + j][i];
+			matrix[firstArea + j][i] = matrix[secondArea + j][i];
+			matrix[secondArea + j][i] = temp;
 		}
 	}
 }
@@ -72,5 +75,28 @@ void Sudoku::SwapColumnAreas() {
 	Transpose();
 }
 void Sudoku::DeleteCells() {
-
+	int temp, numCol, numRow;
+	Complexity();
+	//srand(time(NULL));
+	for (int i = 0; i < rand() % 10 + 50; i++) {
+		temp = rand() % 81;
+		while (matrix[temp % (SIZE * SIZE)][temp / (SIZE * SIZE)] == 0) temp = rand() % 81;
+		numCol = numRow = 0;
+		for (int j = 0; j < SIZE * SIZE; j++) {
+			if (matrix[j][temp / (SIZE * SIZE)] != 0)	numRow++;
+			if (matrix[temp % (SIZE * SIZE)][j] != 0)	numCol++;
+		}
+		/*for (int j = 0; j < SIZE * SIZE; j++) {
+			if (matrix[temp % (SIZE * SIZE)][j] != 0)
+				numCol++;
+		}*/
+		if (numCol > 1 && numRow > 1 || complexity > 0) {
+			matrix[temp % (SIZE * SIZE)][temp / (SIZE * SIZE)] = 0;
+			if (numCol == 1) complexity--;
+			if (numRow == 1) complexity--;
+		}
+		else {
+			//i--;
+		}
+	}
 }
