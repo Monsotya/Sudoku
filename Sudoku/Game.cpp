@@ -39,6 +39,7 @@ void Sudoku::Game() {
 	}
 	else {
 		cout << "You lox!\n";
+		//ShowSolution(); Знизу код
 		for(int i=0;i<SizeBig;i++){
 			for(int j=0;j<SizeBig;j++){
 				matrix[i][j]=answer[i][j];
