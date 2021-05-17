@@ -23,6 +23,7 @@ public:
 	int Check(int element,int a,int b);
 	int StepCheck(int i,int j);
 	void Game();
+	void ShowSolution();
 };
 /*//int Complexity();
 int** CreateMatrix();
