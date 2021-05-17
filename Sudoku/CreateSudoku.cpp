@@ -6,7 +6,6 @@ void Sudoku::CreateMatrix() {
 			matrix[i][j] = (i * SizeSmall + i / SizeSmall + j) % SizeBig + 1;
 		}
 	}
-	Out();
 	for (int i = 0; i < rand() % 25 + 25; i++) {
 		SwapColumnAreas();
 		SwapColumns();
@@ -18,8 +17,12 @@ void Sudoku::CreateMatrix() {
 		SwapRowAreas();
 		SwapRows();
 	}
-	Out();
 	DeleteCells();
+	for (int i = 0; i < SizeBig; i++) {
+		for (int j = 0; j < SizeBig; j++) {
+			answer[i][j] = matrix[i][j];
+		}
+	}
 	/*for (int i = 0; i < SizeBig; i++) {
 		for (int j = 0; j < SizeBig; j++) {
 			if (matrix[i][j] == 0) cout << "     ";
@@ -51,8 +54,9 @@ void Sudoku::SwapRows() {
 	}
 }
 void Sudoku::SwapRowAreas() {
-	int temp, i, j, k = 0, firstArea = rand() % SizeSmall, secondArea = rand() % SizeSmall;
-	while (firstArea == secondArea) secondArea = rand() % SizeSmall;
+	int temp, i, j, k = 0, firstArea = rand() % SizeSmall * SizeSmall, secondArea = rand() % SizeSmall * SizeSmall;
+	while (firstArea == secondArea) secondArea = rand() % SizeSmall * SizeSmall;
+
 	for (i = 0; i < SizeBig; i++) {
 		for (j = 0; j < SizeSmall; j++) {
 			temp = matrix[firstArea + j][i];
