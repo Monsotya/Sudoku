@@ -61,8 +61,10 @@ int Sudoku::StepCheck(int i,int j){
 	return 0;
 }
 
-void Sudoku::Solve(){
+bool Sudoku::Solve(){
 	if(!StepCheck(0,0)){
 		cout << "Error.Solving failed!\n";
+		return false;
 	}
+	return true;
 }
