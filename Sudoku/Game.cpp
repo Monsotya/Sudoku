@@ -1,6 +1,6 @@
 #include "header.h"
 void Sudoku::Game() {
-	int numCol, numRow, num;
+	int numCol, numRow, num, lives;
 	char buffNumCol, buffNumRow, buffNum;
 	lives = LIVES;
 	while (missingCells > 0 && lives > 0) {
