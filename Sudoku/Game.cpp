@@ -25,7 +25,7 @@ void Sudoku::Game() {
 		if (matrix[numRow][numCol] != 0) {
 			cout << "Wrong! The cell is already filled!\n";
 		}
-		else if (matrix[numRow][numCol] != answer[numRow - 1][numCol - 1]) {
+		else if (num != answer[numRow][numCol]) {
 			lives--;
 			cout << "Wrong number! Lives left: " << lives << endl;
 		}

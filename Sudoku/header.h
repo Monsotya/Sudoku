@@ -24,13 +24,4 @@ public:
 	int StepCheck(int i,int j);
 	void Game();
 };
-/*//int Complexity();
-int** CreateMatrix();
-void Transpose(int** matrix[9]);
-void SwapRows(int** matrix[9]);
-void SwapColumns(int** matrix[9]);
-void SwapRowAreas(int** matrix[9]);
-void SwapColumnAreas(int** matrix[9]);
-void DeleteCells(int ind, int** matrix[9]);
-void Out(int matrix[9][9]);
-//int Check(int matrix[9][9]);*/
+
