@@ -1,12 +1,12 @@
 #include "header.h"
 void Sudoku::CreateMatrix() {
 	srand(time(NULL));
-	cout << SizeBig;
 	for (int i = 0; i < SizeBig; i++) {
 		for (int j = 0; j < SizeBig; j++) {
 			matrix[i][j] = (i * SizeSmall + i / SizeSmall + j) % SizeBig + 1;
 		}
 	}
+	Out();
 	for (int i = 0; i < rand() % 25 + 25; i++) {
 		SwapColumnAreas();
 		SwapColumns();
@@ -18,14 +18,15 @@ void Sudoku::CreateMatrix() {
 		SwapRowAreas();
 		SwapRows();
 	}
+	Out();
 	DeleteCells();
-	for (int i = 0; i < SizeBig; i++) {
+	/*for (int i = 0; i < SizeBig; i++) {
 		for (int j = 0; j < SizeBig; j++) {
 			if (matrix[i][j] == 0) cout << "     ";
 			else cout << matrix[i][j] << "    ";
 		}
 		cout << "\n\n";
-	}
+	}*/
 }
 void Sudoku::Transpose() {
 	int temp, k = 0;
@@ -39,8 +40,10 @@ void Sudoku::Transpose() {
 	}
 }
 void Sudoku::SwapRows() {
-	int temp, firstRow = rand() % SizeBig, secondRow = rand() % SizeBig;
-	while (firstRow == secondRow) secondRow = rand() % SizeBig;
+	int temp = rand() % SizeSmall, firstRow = rand() % SizeSmall, secondRow = rand() % SizeSmall;
+	while (firstRow == secondRow) secondRow = rand() % SizeSmall;
+	firstRow = firstRow + temp * SizeSmall;
+	secondRow = secondRow + temp * SizeSmall;
 	for (int i = 0; i < SizeBig; i++) {
 		temp = matrix[firstRow][i];
 		matrix[firstRow][i] = matrix[secondRow][i];

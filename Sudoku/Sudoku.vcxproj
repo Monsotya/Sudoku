@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="Complexity.cpp" />
     <ClCompile Include="CreateSudoku.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="PrintingSudoku.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
