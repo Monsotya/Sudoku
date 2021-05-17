@@ -55,3 +55,15 @@ void Sudoku::Out(){
 	cout << '-' << '\n';
 	cout.fill(' ');
 }
+
+/*
+void Sudoku::ShowSolution(){
+	for(int i=0;i<SizeBig;i++){
+		for(int j=0;j<SizeBig;j++){
+			matrix[i][j]=answer[i][j];
+		}
+	}
+	cout << "Solution :\n";
+	Out();
+}
+*/
