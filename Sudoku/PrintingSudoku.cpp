@@ -53,4 +53,5 @@ void Sudoku::Out(){
 	cout.width(61);
 	cout.fill('-');
 	cout << '-' << '\n';
+	cout.fill(' ');
 }
