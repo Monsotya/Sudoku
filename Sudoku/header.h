@@ -1,10 +1,13 @@
 #include <iostream>
-#define SIZE 3
+#define SizeSmall 3
+#define SizeBig (SizeSmall * SizeSmall)
 using namespace std;
 class Sudoku {
-	int matrix[9][9];
+	int matrix[SizeBig][SizeBig];
 	int complexity;
 	int missingCells;
+	int lives;
+	int answer[SizeBig][SizeBig];
 public:
 	void Complexity();
 	void CreateMatrix();
@@ -15,7 +18,9 @@ public:
 	void SwapColumnAreas();
 	void DeleteCells();
 	void Out();
-	//int Check(int matrix[9][9]);
+	void Solve();
+	void Check();
+	void Game();
 };
 /*//int Complexity();
 int** CreateMatrix();
