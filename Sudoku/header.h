@@ -19,7 +19,7 @@ public:
 	void SwapColumnAreas();
 	void DeleteCells();
 	void Out();
-	void Solve();
+	bool Solve();
 	int Check(int element,int a,int b);
 	int StepCheck(int i,int j);
 	void Game();
