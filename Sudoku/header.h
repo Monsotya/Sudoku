@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 #define SizeSmall 3
 #define SizeBig (SizeSmall * SizeSmall)
 #define LIVES 5

@@ -54,9 +54,8 @@ void Sudoku::SwapRows() {
 	}
 }
 void Sudoku::SwapRowAreas() {
-	int temp, i, j, k = 0, firstArea = rand() % SizeSmall * SizeSmall, secondArea = rand() % SizeSmall * SizeSmall;
+	int temp, i, j, firstArea = rand() % SizeSmall * SizeSmall, secondArea = rand() % SizeSmall * SizeSmall;
 	while (firstArea == secondArea) secondArea = rand() % SizeSmall * SizeSmall;
-
 	for (i = 0; i < SizeBig; i++) {
 		for (j = 0; j < SizeSmall; j++) {
 			temp = matrix[firstArea + j][i];
@@ -86,7 +85,7 @@ void Sudoku::DeleteCells() {
 			if (matrix[j][temp / SizeBig] != 0)	numRow++;
 			if (matrix[temp % SizeBig][j] != 0)	numCol++;
 		}
-		if (numCol > 1 && numRow > 1 || complexity > 0) {
+		if ((numCol > 1 && numRow > 1) || complexity > 0) {
 			matrix[temp % SizeBig][temp / SizeBig] = 0;
 			if (numCol == 1) complexity--;
 			if (numRow == 1) complexity--;

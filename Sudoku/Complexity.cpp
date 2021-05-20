@@ -1,7 +1,6 @@
 #include "header.h"
 void Sudoku::Complexity() {
 	char temp;
-	int ind = 1;
 	srand(time(NULL));
 	cout << "What complexity do you want?\n\te - for easy\n\tm - for medium\n\th - for hard\n";	
 	while(true) {
