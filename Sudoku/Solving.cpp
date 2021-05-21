@@ -1,37 +1,48 @@
 #include "header.h"
 
-int Sudoku::Check(int element,int a,int b){
-	int i,j;
-	for(i=0;i<9;i++){
-		if(answer[a][i] != element && answer[i][b] != element);
+int Sudoku::Check(int element,int row,int col){
+	int rowcol;
+	for(rowcol=0;rowcol<SizeBig;rowcol++){
+		/*if(answer[a][i] != element && answer[i][b] != element);
 		else
+			return 0;*/
+		if(answer[a][rowcol] == element && answer[rowcol][b] == element)
 			return 0;
 	}
-	if(a<SizeSmall){
-		i=0;
-		j=SizeSmall;
-	}else if(a<2*SizeSmall){
-		i=SizeSmall;
-		j=2*SizeSmall;
+	// int i,j;
+	int rowUpLim,rowDownLim;
+	if(row<SizeSmall){
+		rowUpLim=0;
+		rowDownLim=SizeSmall;
+	}else if(row<2*SizeSmall){
+		rowUpLim=SizeSmall;
+		rowDownLim=2*SizeSmall;
 	}else{
-		i=2*SizeSmall;
-		j=SizeBig;
+		rowUpLim=2*SizeSmall;
+		rowDownLim=SizeBig;
 	}
-	int r,k;
-	if(b<SizeSmall){
-		r=0;
-		k=SizeSmall;
-	}else if(b<2*SizeSmall){
-		r=SizeSmall;
-		k=2*SizeSmall;
+	int colLeftLim,colRightLim;
+	//int r,k;
+	if(col<SizeSmall){
+		colLeftLim=0;
+		colRightLim=SizeSmall;
+	}else if(col<2*SizeSmall){
+		colLeftLim=SizeSmall;
+		colRightLim=2*SizeSmall;
 	}else{
-		r=2*SizeSmall;
-		k=SizeBig;
+		colLeftLim=2*SizeSmall;
+		colRightLim=SizeBig;
 	}
-	for(int s=i;s<j;s++){
+	/*for(int s=i;s<j;s++){
 		for(int h=r;h<k;h++){
 			if(answer[s][h] != element);
 			else
+				return 0;
+		}
+	}*/
+	for(int i=rowUpLim;i<rowDownLim;i++){
+		for(int j=colLeftLim;j<colRightLim;j++){
+			if(answer[i][j] == element)
 				return 0;
 		}
 	}
