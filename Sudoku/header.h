@@ -3,6 +3,7 @@
 #define SizeSmall 3
 #define SizeBig (SizeSmall * SizeSmall)
 #define LIVES 5
+#define Line 61
 using namespace std;
 class Sudoku {
 	int matrix[SizeBig][SizeBig];
