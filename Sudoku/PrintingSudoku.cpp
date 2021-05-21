@@ -18,7 +18,7 @@ void Sudoku::Out(){
 		}else{
 			cout << "  ";
 		}
-		cout.width(61);
+		cout.width(Line);
 		cout.fill('-');
 		cout << '-' << '\n';
 		for(int a=0;a<SizeSmall;a++){
@@ -33,7 +33,7 @@ void Sudoku::Out(){
 					cout << matrix[row][col];
 				}
 				col++;
-				for(int k=0;k<2;k++){
+				for(int k=0;k<SizeSmall-1;k++){
 					cout.width(5);
 					if(matrix[row][col] == 0){
 						cout << '-';
@@ -50,7 +50,7 @@ void Sudoku::Out(){
 		}
 	}
 	cout << "  ";
-	cout.width(61);
+	cout.width(Line);
 	cout.fill('-');
 	cout << '-' << '\n';
 	cout.fill(' ');
