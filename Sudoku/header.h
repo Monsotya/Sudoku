@@ -4,6 +4,7 @@
 #define SizeBig (SizeSmall * SizeSmall)
 #define LIVES 5
 #define Line 61
+#define SizeWid 5
 using namespace std;
 class Sudoku {
 	int matrix[SizeBig][SizeBig];
