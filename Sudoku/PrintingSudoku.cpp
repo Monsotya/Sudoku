@@ -3,8 +3,8 @@ void Sudoku::Out(){
 	cout << "  y";
 	int row = 0;
 	int col;
-	for(int i=0;i<3;i++){
-		for(int j=0;j<3;j++){
+	for(int i=0;i<SizeSmall;i++){
+		for(int j=0;j<SizeSmall;j++){
 			cout.width(5);
 			cout << row++;
 		}
@@ -12,7 +12,7 @@ void Sudoku::Out(){
 	}
 	cout << '\n';
 	row = 0;
-	for(int i=0;i<3;i++){
+	for(int i=0;i<SizeSmall;i++){
 		if(!i){
 			cout << "x ";
 		}else{
@@ -21,11 +21,11 @@ void Sudoku::Out(){
 		cout.width(61);
 		cout.fill('-');
 		cout << '-' << '\n';
-		for(int a=0;a<3;a++){
+		for(int a=0;a<SizeSmall;a++){
 			col = 0;
 			cout << row << " ||";
 			cout.fill(' ');
-			for(int r=0;r<3;r++){
+			for(int r=0;r<SizeSmall;r++){
 				cout.width(4);
 				if(matrix[row][col] == 0){
 					cout << '-';
