@@ -1,8 +1,8 @@
 #include "header.h"
 
 int Sudoku::Check(int element,int row,int col){
-	int rowcol;
-	for(rowcol=0;rowcol<SizeBig;rowcol++){
+	//int rowcol;
+	for(int rowcol=0;rowcol<SizeBig;rowcol++){
 		/*if(answer[a][i] != element && answer[i][b] != element);
 		else
 			return 0;*/
