@@ -3,10 +3,11 @@ int main()
 {
 	Sudoku matrix;
 	char answer;
+	//system("chcp 1251 & cls");
 	do {
 		matrix.CreateMatrix();
 		if (matrix.Solve()) {
-			cout << "\nSudoku constructed correctly!\nEnjoy solving sudoku, you have " << LIVES << " lives!\n";
+			cout << "\nSudoku constructed correctly!\nEnjoy solving sudoku, you have " << LIVES << " lives!\n\n";
 			matrix.Game();
 		}
 		do {

@@ -45,6 +45,12 @@ void Sudoku::Game() {
 			cout << "You should enter numbers, not string!\n";
 			continue;
 		}
+		/*cin.putback(buffNumCol);
+		cin.putback(' ');
+		cin.putback(buffNumRow);
+		cin.putback(' ');
+		cin.putback(buffNum);
+		cin >> numCol >> numRow >> num;*/
 		numCol = atoi(buffNumCol);
 		numRow = atoi(buffNumRow);
 		num = atoi(buffNum);
