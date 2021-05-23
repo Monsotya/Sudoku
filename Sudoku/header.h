@@ -3,7 +3,7 @@
 #define SIZESMALL 3
 #define SIZEBIG (SIZESMALL * SIZESMALL)
 #define LIVES 5
-#define LINE 61
+#define LINE 48
 #define SIZEWID 5
 using namespace std;
 class Sudoku {
