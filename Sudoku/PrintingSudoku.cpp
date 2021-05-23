@@ -1,51 +1,49 @@
 #include "header.h"
 void Sudoku::PrintingSudoku() {
-	cout << "  y";
+	cout << "  y ";
 	int row = 0;
 	int col;
-	for (int i = 0;i < SIZESMALL;i++) {
-		for (int j = 0;j < SIZESMALL;j++) {
-			cout.width(SIZEWID);
+	for(int i=0;i<SizeSmall;i++){
+		for(int j=0;j<SizeSmall;j++){
+			cout.width(SizeWid);
 			cout << row++;
 		}
-		cout << "    ";
+		cout.width(SizeWid);
+		cout << " ";
 	}
 	cout << '\n';
 	row = 0;
-	for (int i = 0;i < SIZESMALL;i++) {
-		if (!i) {
+	for(int i=0;i<SizeSmall;i++){
+		if(!i){
 			cout << "x ";
-		}
-		else {
+		}else{
 			cout << "  ";
 		}
-		cout.width(LINE);
+		cout.width(Line);
 		cout.fill('-');
 		cout << '-' << '\n';
-		for (int j = 0;j < SIZESMALL;j++) {
+		for(int a=0;a<SizeSmall;a++){
 			col = 0;
 			cout << row << " ||";
 			cout.fill(' ');
-			for (int k = 0;k < SIZESMALL;k++) {
-				cout.width(SIZEWID - 1);
-				if (matrix[row][col] == 0) {
+			for(int r=0;r<SizeSmall;r++){
+				/*cout.width(SizeWid-1);
+				if(matrix[row][col] == 0){
 					cout << '-';
-				}
-				else {
+				}else{
 					cout << matrix[row][col];
 				}
-				col++;
-				for (int r = 0;r < SIZESMALL - 1;r++) {
-					cout.width(SIZEWID);
-					if (matrix[row][col] == 0) {
+				col++;*/
+				for(int k=0;k<SizeSmall;k++){
+					cout.width(SizeWid);
+					if(matrix[row][col] == 0){
 						cout << '-';
-					}
-					else {
+					}else{
 						cout << matrix[row][col];
 					}
 					col++;
 				}
-				cout.width(SIZEWID);
+				cout.width(SizeWid);
 				cout << '|';
 			}
 			row++;
@@ -53,7 +51,7 @@ void Sudoku::PrintingSudoku() {
 		}
 	}
 	cout << "  ";
-	cout.width(LINE);
+	cout.width(Line);
 	cout.fill('-');
 	cout << '-' << '\n';
 	cout.fill(' ');
