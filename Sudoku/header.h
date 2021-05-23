@@ -25,5 +25,6 @@ public:
 	int Check(int element,int row, int col);
 	int StepCheck(int row,int col);
 	void Game();
+	bool CheckAnswer(char* str);
 };
 
