@@ -6,7 +6,7 @@ int Sudoku::Check(int element, int row, int col) {
 		/*if(answer[a][i] != element && answer[i][b] != element);
 		else
 			return 0;*/
-		if (answer[row][rowcol] == element && answer[rowcol][col] == element)
+		if (answer[row][rowcol] == element || answer[rowcol][col] == element)
 			return 0;
 	}
 	// int i,j;
