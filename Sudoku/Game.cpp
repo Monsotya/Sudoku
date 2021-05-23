@@ -8,6 +8,8 @@ void Sudoku::Game() {
 		cout << "Enter number of column you want to write in\n";
 		cin >> buffNumCol;
 		fseek(stdin, 0, SEEK_END);
+		if (*buffNumCol == 'q')
+			break;
 		if (CheckAnswer(buffNumCol))
 			continue;
 		/*while (ind && buffNumCol[count] != '\0') {
@@ -22,6 +24,8 @@ void Sudoku::Game() {
 		cout << "Enter number of row you want to write in\n";
 		cin >> buffNumRow;
 		fseek(stdin, 0, SEEK_END);
+		if (*buffNumCol == 'q')
+			break;
 		if (CheckAnswer(buffNumRow))
 			continue;
 		/*while (ind && buffNumRow[count] != '\0'){
@@ -36,6 +40,8 @@ void Sudoku::Game() {
 		cout << "Enter number you want to write\n";
 		cin >> buffNum;
 		fseek(stdin, 0, SEEK_END);
+		if (*buffNumCol == 'q')
+			break;
 		if (CheckAnswer(buffNum))
 			continue;
 		/*count = 0;
@@ -51,14 +57,10 @@ void Sudoku::Game() {
 		numCol = atoi(buffNumCol);
 		numRow = atoi(buffNumRow);
 		num = atoi(buffNum);
-		/*if (numCol > SIZEBIG || numRow > SIZEBIG || num > SIZEBIG) {
-			cout << "This is too big!\nYou should enter numbers smaller than " << SIZEBIG << endl;
-			continue;
-		}
-		else if (numCol < 0 || numRow < 0 || num < 0) {
+		if (num < 1) {
 			cout << "This is too small!\nYou should enter numbers bigger than 0\n";
 			continue;
-		}*/
+		}
 		if (matrix[numRow][numCol] != 0) {
 			cout << "Wrong! The cell is already filled!\n";
 		}

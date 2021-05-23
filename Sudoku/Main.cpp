@@ -7,7 +7,7 @@ int main()
 	do {
 		matrix.CreateMatrix();
 		if (matrix.Solve()) {
-			cout << "\nSudoku constructed correctly!\nEnjoy solving sudoku, you have " << LIVES << " lives!\n\n";
+			cout << "\nSudoku constructed correctly!\nEnjoy solving sudoku, you have " << LIVES << " lives!\nIf you want to end game enter q\n";
 			matrix.Game();
 		}
 		do {
