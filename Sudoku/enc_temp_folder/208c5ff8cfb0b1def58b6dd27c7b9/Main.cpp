@@ -5,8 +5,10 @@ int main()
 	char answer;
 	do {
 		matrix.CreateMatrix();
-		if (matrix.Solve())
+		if (matrix.Solve()) {
+			cout << "\nSudoku constructed correctly!\nEnjoy solving sudoku, you have " << LIVES << " lives!\n";
 			matrix.Game();
+		}
 		do {
 			cout << "Do you want to play again?(y/n)\n";
 			cin >> answer;
