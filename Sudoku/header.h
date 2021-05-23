@@ -1,16 +1,16 @@
 #include <iostream>
 #include <ctime>
-#define SizeSmall 3
-#define SizeBig (SizeSmall * SizeSmall)
+#define SIZESMALL 3
+#define SIZEBIG (SIZESMALL * SIZESMALL)
 #define LIVES 5
-#define Line 61
-#define SizeWid 5
+#define LINE 61
+#define SIZEWID 5
 using namespace std;
 class Sudoku {
-	int matrix[SizeBig][SizeBig];
+	int matrix[SIZEBIG][SIZEBIG];
 	int complexity;
 	int missingCells;
-	int answer[SizeBig][SizeBig];
+	int answer[SIZEBIG][SIZEBIG];
 public:
 	void Complexity();
 	void CreateMatrix();
@@ -20,11 +20,10 @@ public:
 	void SwapRowAreas();
 	void SwapColumnAreas();
 	void DeleteCells();
-	void Out();
+	void PrintingSudoku();
 	bool Solve();
-	int Check(int element,int a,int b);
-	int StepCheck(int i,int j);
+	int Check(int element,int row, int col);
+	int StepCheck(int row,int col);
 	void Game();
-	//void ShowSolution();
 };
 

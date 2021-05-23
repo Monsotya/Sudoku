@@ -1,37 +1,41 @@
 #include "header.h"
 
-int Sudoku::Check(int element,int row,int col){
+int Sudoku::Check(int element, int row, int col) {
 	//int rowcol;
-	for(int rowcol=0;rowcol<SizeBig;rowcol++){
+	for (int rowcol = 0;rowcol < SIZEBIG;rowcol++) {
 		/*if(answer[a][i] != element && answer[i][b] != element);
 		else
 			return 0;*/
-		if(answer[row][rowcol] == element && answer[rowcol][col] == element)
+		if (answer[row][rowcol] == element && answer[rowcol][col] == element)
 			return 0;
 	}
 	// int i,j;
-	int rowUpLim,rowDownLim;
-	if(row<SizeSmall){
-		rowUpLim=0;
-		rowDownLim=SizeSmall;
-	}else if(row<2*SizeSmall){
-		rowUpLim=SizeSmall;
-		rowDownLim=2*SizeSmall;
-	}else{
-		rowUpLim=2*SizeSmall;
-		rowDownLim=SizeBig;
+	int rowUpLim, rowDownLim;
+	if (row < SIZESMALL) {
+		rowUpLim = 0;
+		rowDownLim = SIZESMALL;
 	}
-	int colLeftLim,colRightLim;
+	else if (row < 2 * SIZESMALL) {
+		rowUpLim = SIZESMALL;
+		rowDownLim = 2 * SIZESMALL;
+	}
+	else {
+		rowUpLim = 2 * SIZESMALL;
+		rowDownLim = SIZEBIG;
+	}
+	int colLeftLim, colRightLim;
 	//int r,k;
-	if(col<SizeSmall){
-		colLeftLim=0;
-		colRightLim=SizeSmall;
-	}else if(col<2*SizeSmall){
-		colLeftLim=SizeSmall;
-		colRightLim=2*SizeSmall;
-	}else{
-		colLeftLim=2*SizeSmall;
-		colRightLim=SizeBig;
+	if (col < SIZESMALL) {
+		colLeftLim = 0;
+		colRightLim = SIZESMALL;
+	}
+	else if (col < 2 * SIZESMALL) {
+		colLeftLim = SIZESMALL;
+		colRightLim = 2 * SIZESMALL;
+	}
+	else {
+		colLeftLim = 2 * SIZESMALL;
+		colRightLim = SIZEBIG;
 	}
 	/*for(int s=i;s<j;s++){
 		for(int h=r;h<k;h++){
@@ -40,40 +44,41 @@ int Sudoku::Check(int element,int row,int col){
 				return 0;
 		}
 	}*/
-	for(int i=rowUpLim;i<rowDownLim;i++){
-		for(int j=colLeftLim;j<colRightLim;j++){
-			if(answer[i][j] == element)
+	for (int i = rowUpLim;i < rowDownLim;i++) {
+		for (int j = colLeftLim;j < colRightLim;j++) {
+			if (answer[i][j] == element)
 				return 0;
 		}
 	}
 	return 1;
 }
 
-int Sudoku::StepCheck(int i,int j){
-	if(i >= SizeBig-1 && j >= SizeBig)
+int Sudoku::StepCheck(int row, int col) {
+	if (row >= SIZEBIG - 1 && col >= SIZEBIG)
 		return 1;
-	if(j >= SizeBig){
-		j = 0;
-		i++;
+	if (col >= SIZEBIG) {
+		col = 0;
+		row++;
 	}
-	if(answer[i][j] != 0)
-		return StepCheck(i,j+1);
-	
-	for(int k=1;k<10;k++){
-		if(Check(k,i,j)){
-			answer[i][j]=k;
-			if(StepCheck(i,j+1)){
+	if (answer[row][col] != 0)
+		return StepCheck(row, col + 1);
+
+	for (int num = 1;num <= SIZEBIG;num++) {
+		if (Check(num, row, col)) {
+			answer[row][col] = num;
+			if (StepCheck(row, col + 1)) {
 				return 1;
-			}else{
-				answer[i][j]=0;
+			}
+			else {
+				answer[row][col] = 0;
 			}
 		}
 	}
 	return 0;
 }
 
-bool Sudoku::Solve(){
-	if(!StepCheck(0,0)){
+bool Sudoku::Solve() {
+	if (!StepCheck(0, 0)) {
 		cout << "Error.Solving failed!\n";
 		return false;
 	}
