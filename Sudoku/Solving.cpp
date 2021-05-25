@@ -79,6 +79,7 @@ int Sudoku::StepCheck(int row, int col) {
 }
 
 bool Sudoku::Solve() {
+	stepsProgramm = 0;
 	if (!StepCheck(0, 0)) {
 		cout << "Error.Solving failed!\n";
 		return false;
