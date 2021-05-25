@@ -104,6 +104,7 @@ void Sudoku::Game() {
 		cout << "Solution :\n";
 		PrintingSudoku();
 	}
+	cout << "Number of Computer Steps : " << steps << '\n';
 }
 bool Sudoku::CheckAnswer(char* str) {
 	int ind = 1, count = 0, buff;
