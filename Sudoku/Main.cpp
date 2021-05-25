@@ -3,6 +3,7 @@ int main()
 {
 	Sudoku matrix;
 	char answer;
+	welcome();
 	//system("chcp 1251 & cls");
 	do {
 		matrix.CreateMatrix();
