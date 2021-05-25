@@ -1,4 +1,22 @@
 #include "header.h"
+void welcome(){
+	cout << "\n\n\t******************************\n";
+	cout << "\t*                            *\n";
+	cout << "\t*          Welcome!          *\n";
+	cout << "\t*    To the puzzle Game of   *\n";
+	cout << "\t*          -SUDOKU-          *\n";
+	cout << "\t*                            *\n";
+	cout << "\t******************************\n\n\n";
+	cout << "\t  <= Press Enter to Start =>\n";
+	cin.unsetf(ios::skipws);
+	char ch;
+	cin >> ch;
+	cin.clear();
+	cin.ignore(32727,'\n');
+	cin.setf(ios::skipws);
+	//fseek(stdin, 0, SEEK_END);
+}
+
 void Sudoku::Game() {
 	int numCol, numRow, num, lives;
 	char* buffNumCol = new char, *buffNumRow = new char, *buffNum = new char;
