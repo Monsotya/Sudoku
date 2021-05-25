@@ -9,6 +9,7 @@ using namespace std;
 class Sudoku {
 	int matrix[SIZEBIG][SIZEBIG];
 	int complexity;
+	int steps;
 	int missingCells;
 	int answer[SIZEBIG][SIZEBIG];
 public:
