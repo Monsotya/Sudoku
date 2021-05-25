@@ -65,7 +65,7 @@ int Sudoku::StepCheck(int row, int col) {
 
 	for (int num = 1;num <= SIZEBIG;num++) {
 		if (Check(num, row, col)) {
-			steps++;
+			stepsProgramm++;
 			answer[row][col] = num;
 			if (StepCheck(row, col + 1)) {
 				return 1;

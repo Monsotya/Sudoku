@@ -1,5 +1,5 @@
 #include "header.h"
-void welcome(){
+void Sudoku::Welcome(){
 	cout << "\n\n\t******************************\n";
 	cout << "\t*                            *\n";
 	cout << "\t*          Welcome!          *\n";
@@ -18,9 +18,10 @@ void welcome(){
 }
 
 void Sudoku::Game() {
-	int numCol, numRow, num, lives;
+	int numCol, numRow, num, lives = LIVES;
 	char* buffNumCol = new char, *buffNumRow = new char, *buffNum = new char;
-	lives = LIVES;
+	stepsUser = 0;
+	time_t start = time(NULL);
 	while (missingCells > 0 && lives > 0) {
 		PrintingSudoku();
 		cout << "Enter number of column you want to write in\n";
@@ -30,15 +31,6 @@ void Sudoku::Game() {
 			break;
 		if (CheckAnswer(buffNumCol))
 			continue;
-		/*while (ind && buffNumCol[count] != '\0') {
-			if (buffNumCol[count] < '0' || buffNumCol[count] > '9')
-				ind = 0;
-			count++;
-		}
-		if (!ind) {
-			cout << "You should enter numbers, not string!\n";
-			continue;
-		}*/
 		cout << "Enter number of row you want to write in\n";
 		cin >> buffNumRow;
 		fseek(stdin, 0, SEEK_END);
@@ -46,15 +38,6 @@ void Sudoku::Game() {
 			break;
 		if (CheckAnswer(buffNumRow))
 			continue;
-		/*while (ind && buffNumRow[count] != '\0'){
-			if (buffNumRow[count] < '0' || buffNumRow[count] > '9')
-				ind = 0;
-			count++;
-		}
-		if (!ind) {
-			cout << "You should enter numbers, not string!\n";
-			continue;
-		}*/
 		cout << "Enter number you want to write\n";
 		cin >> buffNum;
 		fseek(stdin, 0, SEEK_END);
@@ -62,16 +45,6 @@ void Sudoku::Game() {
 			break;
 		if (CheckAnswer(buffNum))
 			continue;
-		/*count = 0;
-		while (ind && buffNum[count] != '\0') {
-			if (buffNum[count] < '0' || buffNum[count] > '9')
-				ind = 0;
-			count++;
-		}
-		if (!ind) {
-			cout << "You should enter numbers, not string!\n";
-			continue;
-		}*/
 		numCol = atoi(buffNumCol);
 		numRow = atoi(buffNumRow);
 		num = atoi(buffNum);
@@ -90,7 +63,9 @@ void Sudoku::Game() {
 			matrix[numRow][numCol] = num;
 			missingCells--;
 		}
+		stepsUser++;
 	}
+	time_t end = time(NULL);
 	if (missingCells == 0) {
 		cout << "Congratulations! You won!\n";
 	}
@@ -104,7 +79,10 @@ void Sudoku::Game() {
 		cout << "Solution :\n";
 		PrintingSudoku();
 	}
-	cout << "Number of Computer Steps : " << steps << '\n';
+	cout << "Number of Computer Steps : " << stepsProgramm << endl;
+	cout << "Number of User Steps : " << stepsUser << endl;
+	cout << "Time you spended playing this game : " << (end - start) / 60 << " min " << (end - start) % 60 << " sec\n";
+
 }
 bool Sudoku::CheckAnswer(char* str) {
 	int ind = 1, count = 0, buff;
@@ -122,9 +100,5 @@ bool Sudoku::CheckAnswer(char* str) {
 		cout << "This is too big!\nYou should enter numbers smaller than " << SIZEBIG + 1<< endl;
 		return true;
 	}
-	/*else if (buff < 0) {
-		cout << "This is too small!\nYou should enter numbers bigger than 0\n";
-		return true;
-	}*/
 	return false;
 }
