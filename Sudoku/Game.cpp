@@ -18,9 +18,8 @@ void Sudoku::Welcome(){
 }
 
 void Sudoku::Game() {
-	int numCol, numRow, num, lives = LIVES;
-	char* buffNumCol = new char, *buffNumRow = new char, *buffNum = new char;
-	stepsUser = 0;
+	int numCol, numRow, num, lives = LIVES, stepsUser = 0;
+	char* buffNumCol = new char, *buffNumRow = new char, *buffNum = new char;	
 	time_t start = time(NULL);
 	while (missingCells > 0 && lives > 0) {
 		PrintingSudoku();
@@ -81,7 +80,7 @@ void Sudoku::Game() {
 	}
 	cout << "Number of Computer Steps : " << stepsProgramm << endl;
 	cout << "Number of User Steps : " << stepsUser << endl;
-	cout << "Time you spended playing this game : " << (end - start) / 60 << " min " << (end - start) % 60 << " sec\n";
+	cout << "Time you spended playing this game : " << (end - start) / SECONDS << " min " << (end - start) % SECONDS << " sec\n";
 
 }
 bool Sudoku::CheckAnswer(char* str) {

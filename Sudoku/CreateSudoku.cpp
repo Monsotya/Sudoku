@@ -6,14 +6,14 @@ void Sudoku::CreateMatrix() {
 			matrix[i][j] = (i * SIZESMALL + i / SIZESMALL + j) % SIZEBIG + 1;
 		}
 	}
-	for (int i = 0; i < rand() % 25 + 25; i++) {
+	for (int i = 0; i < rand() % SIZEBIG + SIZEBIG * SIZEBIG; i++) {
 		SwapColumnAreas();
 		SwapColumns();
 	}	
 	for (int i = 0; i < rand() % 2; i++) {
 		Transpose();
 	}
-	for (int i = 0; i < rand() % 25 + 25; i++) {
+	for (int i = 0; i < rand() % SIZEBIG + SIZEBIG * SIZEBIG; i++) {
 		SwapRowAreas();
 		SwapRows();
 	}
@@ -23,13 +23,6 @@ void Sudoku::CreateMatrix() {
 			answer[i][j] = matrix[i][j];
 		}
 	}
-	/*for (int i = 0; i < SIZEBIG; i++) {
-		for (int j = 0; j < SIZEBIG; j++) {
-			if (matrix[i][j] == 0) cout << "     ";
-			else cout << matrix[i][j] << "    ";
-		}
-		cout << "\n\n";
-	}*/
 }
 void Sudoku::Transpose() {
 	int temp, k = 0;

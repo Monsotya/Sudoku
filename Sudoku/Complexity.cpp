@@ -8,19 +8,19 @@ void Sudoku::Complexity() {
 		fseek(stdin, 0, SEEK_END);
 		if (temp == 'e' || temp == 'E') {
 			complexity = 0;
-			missingCells = rand() % SIZESMALL + SIZEBIG *SIZEBIG * 0.5;
+			missingCells = rand() % SIZESMALL + SIZEBIG * SIZEBIG * EASYPERCENT;
 			cout << "You chose easy mode!\n";
 			break;
 		}
 		else if (temp == 'm' || temp == 'M') {
 			complexity = 1;
-			missingCells = rand() % SIZESMALL + SIZEBIG * SIZEBIG * 0.6;
+			missingCells = rand() % SIZESMALL + SIZEBIG * SIZEBIG * MEDIUMPERCENT;
 			cout << "You chose medium mode!\n";
 			break;
 		}
 		else if (temp == 'h' || temp == 'H') {
 			complexity = 2;
-			missingCells = rand() % SIZESMALL + SIZEBIG * SIZEBIG * 0.7;
+			missingCells = rand() % SIZESMALL + SIZEBIG * SIZEBIG * HARDPERCENT;
 			cout << "You chose hard mode!\n";
 			break;
 		}
